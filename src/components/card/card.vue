@@ -1,5 +1,6 @@
 <template lang="pug">
   div.card
+    marvel-card-component.card__marvel(:class="marvelClass")
     button.card__button(:class="cardClass" @click="onCardClick" :disabled="card.selected")
       object(
         type="image/svg+xml" 
@@ -15,13 +16,13 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 import Card from "@/components/card/card.interface";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
-
+import MarvelCardComponent from '@/components/marvel-card.vue';
 library.add(faUserSecret);
-@Component
+@Component({ components: { MarvelCardComponent } })
 export default class CardComponent extends Vue {
   @Prop({ required: true, type: Object })
   private card!: Card;
-
+  
   public onCardClick() {
     this.card.selected = !this.card.selected;
     this.sendCards();
@@ -36,6 +37,10 @@ export default class CardComponent extends Vue {
   public get cardClass(): string {
     return this.card.selected ? 'card__button--open': 'card__button--close';
   }
+
+  public get marvelClass(): string {
+    return this.card.selected ? 'card__marvel--open': 'card__marvel--close';
+  }
 }
 </script>
 
@@ -47,11 +52,25 @@ export default class CardComponent extends Vue {
   position: relative
   margin: 10px
   width: $card-size
-  height: $card-size
-
+  height: auto
   @include desktop
     width: $card-size-desktop
-    height: $card-size-desktop
+    height: auto
+
+  &__marvel
+    transition: transform .5s
+    backface-visibility: hidden
+    transform-style: preserve-3d
+    &--open
+      background: $white
+      @include box-shadow ($card-animation-size, $card-animation-color)
+      -webkit-animation: openCard .4s ease
+      animation: openCard .4s ease
+
+    &--close
+      @include box-shadow($card-shadow, $card-shadow)
+      -webkit-animation: closeCard .4s ease
+      animation: closeCard .4s ease
 
   &__button
     position: absolute
@@ -62,10 +81,11 @@ export default class CardComponent extends Vue {
     border: none
     background-color: transparent
     perspective: 100%
-    background: $light-blue
+    background: none
     transition: transform .5s
     backface-visibility: hidden
     transform-style: preserve-3d
+
     @include flex(column)
     @include box-shadow($card-shadow, $card-shadow)
 

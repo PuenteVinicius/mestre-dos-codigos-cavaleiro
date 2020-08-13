@@ -6,11 +6,6 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Login",
-    component: Login
-  },
-  {
-    path: "/board",
     name: "Board",
     params: { userName: "" },
     component: () => import("@/views/board.vue")

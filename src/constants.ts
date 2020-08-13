@@ -3,5 +3,5 @@ export enum Constants {
   FIRST_CARD = 0,
   SECOND_CARD = 1,
   CARDS_FILE_PATH = "./cards.json",
-  MAX_LENGTH = 20
+  MAX_LENGTH = 10
 }

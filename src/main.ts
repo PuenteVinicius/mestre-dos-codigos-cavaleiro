@@ -6,6 +6,8 @@ import store from "./store";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import VueMaterial from "vue-material";
+import "vue-material/dist/vue-material.min.css";
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
@@ -17,3 +19,4 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount("#app");
+Vue.use(VueMaterial);

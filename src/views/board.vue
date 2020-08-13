@@ -1,15 +1,15 @@
 <template lang="pug">
   section.board
-    h1.board__game-title Puzzle
-      span Memory
+    //- h1.board__game-title Puzzle
+    //-   span Memory
     div(v-for="card in cards")
       card-component(:card="card" @cardSelected="updateBoard")
-    tries-component(
-      :tries="user.userTries"
-    )
-    ranking-component(
-      :rankingList="rankingList"
-    )
+    //- tries-component(
+    //-   :tries="user.userTries"
+    //- )
+    //- ranking-component(
+    //-   :rankingList="rankingList"
+    //- )
 </template>
 
 <script lang="ts">

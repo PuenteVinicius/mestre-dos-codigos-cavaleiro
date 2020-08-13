@@ -7,6 +7,7 @@
 <style lang="scss">
 body {
   margin: 0;
+  background: #151515;
 }
 #app {
   display: flex;
