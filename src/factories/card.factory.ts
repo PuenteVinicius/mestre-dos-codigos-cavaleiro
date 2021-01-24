@@ -62,6 +62,20 @@ export default class CardFactory {
     return cards;
   }
 
+  public static randomizeCards(cards: Card[]) {
+    const randomizedCards: Card[] = [];
+
+    while (randomizedCards.length < Constants.MAX_LENGTH) {
+      cards.forEach(() => {
+        const index = Math.floor(Math.random() * Constants.MAX_LENGTH);
+        const card = cards[index];
+
+        if (!randomizedCards.find(radonCard => radonCard === card))
+          randomizedCards.push(cards[index]);
+      });
+    }
+    return randomizedCards;
+  }
 
   public static showCards(cards: Card[]): Card[] {
     cards.forEach(card => {
