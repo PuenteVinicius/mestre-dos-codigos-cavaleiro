@@ -6,6 +6,7 @@ import store from "./store";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+// eslint-disable-next-line
 import VueMaterial from "vue-material";
 import "vue-material/dist/vue-material.min.css";
 

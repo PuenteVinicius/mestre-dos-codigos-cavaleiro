@@ -15,7 +15,7 @@ export default class TriesComponent extends Vue {
 </script>
 
 <style scoped lang="sass">
-@import "../assets/style/main.sass"
+@import "../../assets/style/main.sass"
 
 .tries
   position: relative

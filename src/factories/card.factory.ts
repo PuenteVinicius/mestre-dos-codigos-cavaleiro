@@ -1,5 +1,6 @@
-import Card from "./card.interface";
-import { Constants } from "../../constants";
+import Card from "@/components/card/card.interface";
+import { Constants } from "@/constants";
+
 export default class CardFactory {
   public static canInsertCard(selectedCards: Card[], newSelectedCard: Card) {
     return (

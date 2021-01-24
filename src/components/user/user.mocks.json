@@ -1,0 +1,183 @@
+{
+	"firstCase": [
+		{
+			"userTries": 20,
+			"userName": "Vinicius"
+		},
+		{
+			"userTries": 2,
+			"userName": "Reinaldo"
+		},
+		{
+			"userTries": 79,
+			"userName": "Rosana"
+		},
+		{
+			"userTries": 22,
+			"userName": "Marcos"
+		},
+		{
+			"userTries": 1,
+			"userName": "Jullia"
+		}
+	],
+	"secondCase": [
+		{
+			"userTries": 1,
+			"userName": "Vinicius"
+		},
+		{
+			"userTries": 129,
+			"userName": "Reinaldo"
+		},
+		{
+			"userTries": 79,
+			"userName": "Rosana"
+		},
+		{
+			"userTries": 22,
+			"userName": "Marcos"
+		},
+		{
+			"userTries": 77,
+			"userName": "Jullia"
+		}
+	],
+	"firstCaseOrderedName": [
+		{
+			"userTries": 1,
+			"userName": "Jullia"
+		},
+		{
+			"userTries": 22,
+			"userName": "Marcos"
+		},
+		{
+			"userTries": 2,
+			"userName": "Reinaldo"
+		},
+		{
+			"userTries": 79,
+			"userName": "Rosana"
+		},
+		{
+			"userTries": 20,
+			"userName": "Vinicius"
+		}
+	],
+
+	"secondCaseOrderedName": [
+		{
+			"userTries": 77,
+			"userName": "Jullia"
+		},
+		{
+			"userTries": 22,
+			"userName": "Marcos"
+		},
+		{
+			"userTries": 129,
+			"userName": "Reinaldo"
+		},
+		{
+			"userTries": 79,
+			"userName": "Rosana"
+		},
+		{
+			"userTries": 1,
+			"userName": "Vinicius"
+		}
+	],
+
+	"firstCaseOrderedTries": [
+		{
+			"userTries": 1,
+			"userName": "Jullia"
+		},
+		{
+			"userTries": 2,
+			"userName": "Reinaldo"
+		},
+		{
+			"userTries": 20,
+			"userName": "Vinicius"
+		},
+		{
+			"userTries": 22,
+			"userName": "Marcos"
+		},
+		{
+			"userTries": 79,
+			"userName": "Rosana"
+		}
+	],
+
+	"secondCaseOrderedTries": [
+		{
+			"userTries": 1,
+			"userName": "Vinicius"
+		},
+		{
+			"userTries": 22,
+			"userName": "Marcos"
+		},
+		{
+			"userTries": 77,
+			"userName": "Jullia"
+		},
+		{
+			"userTries": 79,
+			"userName": "Rosana"
+		},
+		{
+			"userTries": 129,
+			"userName": "Reinaldo"
+		}
+	],
+
+	"firstCaseOrderedRanking": [
+		{
+			"userTries": 1,
+			"userName": "Jullia"
+		},
+		{
+			"userTries": 2,
+			"userName": "Reinaldo"
+		},
+		{
+			"userTries": 20,
+			"userName": "Vinicius"
+		},
+		{
+			"userTries": 22,
+			"userName": "Marcos"
+		},
+		{
+			"userTries": 79,
+			"userName": "Rosana"
+		}
+	],
+	
+	"secondCaseOrderedRanking": [
+		{
+			"userTries": 1,
+			"userName": "Vinicius"
+		},
+		{
+			"userTries": 22,
+			"userName": "Marcos"
+		},
+		{
+			"userTries": 77,
+			"userName": "Jullia"
+		},
+		{
+			"userTries": 79,
+			"userName": "Rosana"
+		},
+		{
+			"userTries": 129,
+			"userName": "Reinaldo"
+		}
+	]
+}

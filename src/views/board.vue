@@ -14,24 +14,25 @@
 
 <script lang="ts">
 import { Constants } from "@/constants";
-import { AxiosResponse } from "axios";
 import Card from "@/components/card/card.interface";
 import User from "@/components/user/user.entity";
-import CardsFactory from "@/components/card/card.factory";
-import CardsService from "@/components/card/card.service";
+import CardsFactory from "@/factories/card.factory";
 import UserFactory from "@/components/user/user.factory";
 import CardComponent from "../components/card/card.vue";
-import TriesComponent from "../components/tries.vue";
-import RankingComponent from "../components/ranking.vue";
+import TriesComponent from "../components/tries/tries.vue";
+import RankingComponent from "../components/ranking/ranking.vue";
 import Swal from "sweetalert2";
 import { Component, Vue } from "vue-property-decorator";
+import HeroesService from "../services/heroes/heroes.service";
 
 @Component({ components: { CardComponent, TriesComponent, RankingComponent } })
+
 export default class Board extends Vue {
   selectedCards: Card[] = [];
   cards: Card[] = [];
   user: User = new User();
   rankingList: User[] = [];
+  heroesService: HeroesService = new HeroesService();
 
   created() {
     this.startGame();
@@ -79,11 +80,8 @@ export default class Board extends Vue {
     this.setCards();
   }
 
-  setCards(): void {
-    CardsService.getAllCards().then((response: AxiosResponse<Card[]>) => {
-      this.cards = CardsFactory.randomizeCards(response.data);
-      this.showCards();
-    });
+  setCards() {
+    this.heroesService.getAllCards();
   }
 
   showCards(): void {

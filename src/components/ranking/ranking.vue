@@ -14,7 +14,8 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
-import User from "./user/user.entity";
+import User from "../user/user.entity";
+
 @Component
 export default class RankingComponent extends Vue {
   @Prop({ required: true, type: Array })
@@ -23,7 +24,7 @@ export default class RankingComponent extends Vue {
 </script>
 
 <style scoped lang="sass">
-@import "../assets/style/main.sass"
+@import "../../assets/style/main.sass"
 
 .ranking
   display: block

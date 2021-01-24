@@ -1,11 +1,11 @@
-import { shallowMount, mount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import Card from "../card.vue";
-import Cards from "../../../../public/cards.json";
+import Cards from "../../../public/cards.json";
 
 const wrapper: any = shallowMount(Card, {
   propsData: {
-    card: Cards[0],
-  },
+    card: Cards[0]
+  }
 });
 
 describe("Card", () => {
@@ -23,26 +23,26 @@ describe("Card", () => {
     describe("should deny selected state", () => {
       it("when card selected state is true", () => {
         wrapper.setProps({
-            card: {
-              id: 1,
-              code: "JS",
-              name: "Javascript",
-              svgPath: "https://svgshare.com/i/J3t.svg",
-              selected: true,
-            },
+          card: {
+            id: 1,
+            code: "JS",
+            name: "Javascript",
+            svgPath: "https://svgshare.com/i/J3t.svg",
+            selected: true
+          }
         });
         wrapper.vm.onCardClick();
         expect(wrapper.vm.card.selected).toBeFalsy();
       });
       it("when card selected state is false", () => {
         wrapper.setProps({
-            card: {
-              id: 1,
-              code: "JS",
-              name: "Javascript",
-              svgPath: "https://svgshare.com/i/J3t.svg",
-              selected: false,
-            },
+          card: {
+            id: 1,
+            code: "JS",
+            name: "Javascript",
+            svgPath: "https://svgshare.com/i/J3t.svg",
+            selected: false
+          }
         });
         wrapper.vm.onCardClick();
         expect(wrapper.vm.card.selected).toBeTruthy();
@@ -63,25 +63,25 @@ describe("Card", () => {
   describe("[cardClass] - should return de correct class", () => {
     it("when card selected state is true", () => {
       wrapper.setProps({
-          card: {
-            id: 1,
-            code: "JS",
-            name: "Javascript",
-            svgPath: "https://svgshare.com/i/J3t.svg",
-            selected: true,
-          },
+        card: {
+          id: 1,
+          code: "JS",
+          name: "Javascript",
+          svgPath: "https://svgshare.com/i/J3t.svg",
+          selected: true
+        }
       });
       expect(wrapper.vm.cardClass === "card__button--open").toBeTruthy();
     });
     it("when card selected state is false", () => {
       wrapper.setProps({
-          card: {
-            id: 1,
-            code: "JS",
-            name: "Javascript",
-            svgPath: "https://svgshare.com/i/J3t.svg",
-            selected: false,
-          },
+        card: {
+          id: 1,
+          code: "JS",
+          name: "Javascript",
+          svgPath: "https://svgshare.com/i/J3t.svg",
+          selected: false
+        }
       });
       expect(wrapper.vm.cardClass === "card__button--close").toBeTruthy();
     });

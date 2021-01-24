@@ -16,13 +16,13 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 import Card from "@/components/card/card.interface";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
-import MarvelCardComponent from '@/components/marvel-card.vue';
+import MarvelCardComponent from "@/components/marvel-card/marvel-card.vue";
 library.add(faUserSecret);
 @Component({ components: { MarvelCardComponent } })
 export default class CardComponent extends Vue {
   @Prop({ required: true, type: Object })
   private card!: Card;
-  
+
   public onCardClick() {
     this.card.selected = !this.card.selected;
     this.sendCards();
@@ -35,11 +35,11 @@ export default class CardComponent extends Vue {
   }
 
   public get cardClass(): string {
-    return this.card.selected ? 'card__button--open': 'card__button--close';
+    return this.card.selected ? "card__button--open" : "card__button--close";
   }
 
   public get marvelClass(): string {
-    return this.card.selected ? 'card__marvel--open': 'card__marvel--close';
+    return this.card.selected ? "card__marvel--open" : "card__marvel--close";
   }
 }
 </script>
