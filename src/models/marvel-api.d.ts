@@ -4,13 +4,13 @@ export default interface MarvelResponse {
     count: number;
     limit: number;
     offset: number;
-    results: Heroes[];
+    results: Hero[];
     total: number;
   };
   status: string;
 }
 
-export interface Heroes {
+export interface Hero {
   id: number;
   name: string;
   thumbnail: Thumbnail;

@@ -1,7 +1,8 @@
+import { Thumbnail } from "@/models/marvel-api";
+
 export default interface Card {
   id: number;
-  code: string;
   name: string;
-  svgPath: string;
   selected: boolean;
+  thumbnail: Thumbnail;
 }

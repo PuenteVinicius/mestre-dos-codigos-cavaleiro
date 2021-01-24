@@ -1,7 +1,27 @@
 import Card from "@/components/card/card.interface";
 import { Constants } from "@/constants";
+import { Hero } from "@/models/marvel-api";
 
 export default class CardFactory {
+  public static heroesToCards(heroes: Hero[]): Card[] {
+    const cards: Card[] = heroes.map((hero: Hero) => {
+      const card: Card = {
+        id: 0,
+        name: "",
+        selected: false,
+        thumbnail: {
+          extension: "",
+          path: ""
+        }
+      };
+      card.id = hero.id;
+      card.name = hero.name;
+      card.selected = false;
+      card.thumbnail = hero.thumbnail;
+      return card;
+    });
+    return cards;
+  }
   public static canInsertCard(selectedCards: Card[], newSelectedCard: Card) {
     return (
       selectedCards === [] ||
@@ -10,13 +30,13 @@ export default class CardFactory {
   }
 
   public static compareCards(firstCard: Card, secondCard: Card) {
-    return firstCard.code === secondCard.code;
+    return firstCard.id === secondCard.id;
   }
 
   public static resetCards(selectedCards: Card[], cards: Card[]) {
     selectedCards.forEach(selectedCard => {
       cards.map(card => {
-        if (card.code === selectedCard.code) card.selected = false;
+        if (card.id === selectedCard.id) card.selected = false;
       });
     });
 
@@ -42,20 +62,6 @@ export default class CardFactory {
     return cards;
   }
 
-  public static randomizeCards(cards: Card[]) {
-    const randomizedCards: Card[] = [];
-
-    while (randomizedCards.length < Constants.MAX_LENGTH) {
-      cards.forEach(() => {
-        const index = Math.floor(Math.random() * Constants.MAX_LENGTH);
-        const card = cards[index];
-
-        if (!randomizedCards.find(radonCard => radonCard === card))
-          randomizedCards.push(cards[index]);
-      });
-    }
-    return randomizedCards;
-  }
 
   public static showCards(cards: Card[]): Card[] {
     cards.forEach(card => {

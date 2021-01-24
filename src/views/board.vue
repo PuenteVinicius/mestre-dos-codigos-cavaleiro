@@ -26,7 +26,6 @@ import { Component, Vue } from "vue-property-decorator";
 import HeroesService from "../services/heroes/heroes.service";
 
 @Component({ components: { CardComponent, TriesComponent, RankingComponent } })
-
 export default class Board extends Vue {
   selectedCards: Card[] = [];
   cards: Card[] = [];
@@ -80,8 +79,9 @@ export default class Board extends Vue {
     this.setCards();
   }
 
-  setCards() {
-    this.heroesService.getAllCards();
+  async setCards() {
+    const heroes = await this.heroesService.getAllHeroes();
+    this.cards = CardsFactory.heroesToCards(heroes);
   }
 
   showCards(): void {
