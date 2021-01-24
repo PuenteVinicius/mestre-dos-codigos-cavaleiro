@@ -2,9 +2,8 @@
   div.card
     marvel-card-component.card__marvel(:class="marvelClass")
     button.card__button(:class="cardClass" @click="onCardClick" :disabled="card.selected")
-      object(
-        type="image/svg+xml" 
-        :data="card.svgPath" 
+      img(
+        :src="createThumbnail" 
         width="80" 
         height="80"
       ) 
@@ -20,7 +19,7 @@ import MarvelCardComponent from "@/components/marvel-card/marvel-card.vue";
 library.add(faUserSecret);
 @Component({ components: { MarvelCardComponent } })
 export default class CardComponent extends Vue {
-  @Prop({ required: true, type: Object })
+  @Prop({ required: true })
   private card!: Card;
 
   public onCardClick() {
@@ -32,6 +31,10 @@ export default class CardComponent extends Vue {
     setTimeout(() => {
       this.$emit("cardSelected", this.card);
     }, 800);
+  }
+
+  public get createThumbnail(): string {
+    return `${this.card.thumbnail.path}/portrait_xlarge.${this.card.thumbnail.extension}`;
   }
 
   public get cardClass(): string {
@@ -92,10 +95,10 @@ export default class CardComponent extends Vue {
     &:hover
       cursor: pointer
     i ,
-    object
+    img
       pointer-events: none
 
-    object
+    img
       display: none
     i
       font-size: 3rem
@@ -109,7 +112,7 @@ export default class CardComponent extends Vue {
       animation: openCard .4s ease
       i
         display: none
-      object
+      img
         display: block
 
     &--close
@@ -118,7 +121,7 @@ export default class CardComponent extends Vue {
       animation: closeCard .4s ease
       i
         display: block
-      object
+      img
         display: none
 
 @keyframes openCard
@@ -126,7 +129,7 @@ export default class CardComponent extends Vue {
     i
       display: block
 
-    object
+    img
       display: none
 
     transform: rotateY(0deg)
@@ -138,7 +141,7 @@ export default class CardComponent extends Vue {
     i
       display: none
 
-    object
+    img
       display: block
 
   100%
@@ -151,7 +154,7 @@ export default class CardComponent extends Vue {
       display: none
 
 
-    object
+    img
       display: block
 
     transform: rotateY(0deg)
@@ -161,14 +164,14 @@ export default class CardComponent extends Vue {
     i
       display: block
 
-    object
+    img
       display: none
 
   75%
     i
       display: block
 
-    object
+    img
       display: none
 
   100%
