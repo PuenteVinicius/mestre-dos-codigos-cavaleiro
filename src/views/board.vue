@@ -4,12 +4,12 @@
     //-   span Memory
     div(v-for="card in cards")
       card-component(:card="card" @cardSelected="updateBoard")
-    //- tries-component(
-    //-   :tries="user.userTries"
-    //- )
-    //- ranking-component(
-    //-   :rankingList="rankingList"
-    //- )
+    tries-component(
+      :tries="user.userTries"
+    )
+    ranking-component(
+      :rankingList="rankingList"
+    )
 </template>
 
 <script lang="ts">
@@ -34,7 +34,11 @@ export default class Board extends Vue {
   heroesService: HeroesService = new HeroesService();
 
   created() {
-    this.startGame();
+    this.heroesService.getAllHeroes().then(heroes => {
+      this.cards = CardsFactory.heroesToCards(heroes);
+      this.startGame();
+      this.showCards();
+    });
   }
 
   updateBoard(selectedCard: Card): void {
@@ -76,19 +80,13 @@ export default class Board extends Vue {
   startGame(): void {
     this.setRankingList();
     this.user.saveUser(this.$router.currentRoute.params.userName);
-    this.setCards();
-  }
-
-  async setCards() {
-    const heroes = await this.heroesService.getAllHeroes();
-    this.cards = CardsFactory.heroesToCards(heroes);
   }
 
   showCards(): void {
     this.cards = CardsFactory.showCards(this.cards);
     setTimeout(() => {
       this.cards = CardsFactory.closeCards(this.cards);
-    }, 4000);
+    }, 5000);
   }
 
   setRankingList() {

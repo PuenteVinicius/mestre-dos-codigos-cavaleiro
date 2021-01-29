@@ -5,7 +5,7 @@ import { Hero } from "@/models/marvel-api";
 export default class CardFactory {
   public static heroesToCards(heroes: Hero[]): Card[] {
     const cards: Card[] = heroes.map((hero: Hero) => {
-      const card: Card = {
+      let card: Card = {
         id: 0,
         name: "",
         selected: false,
@@ -14,29 +14,28 @@ export default class CardFactory {
           path: ""
         }
       };
-      card.id = hero.id;
-      card.name = hero.name;
-      card.selected = false;
-      card.thumbnail = hero.thumbnail;
+      card = {
+        id: hero.id,
+        name: hero.name,
+        selected: false,
+        thumbnail: {
+          extension: hero.thumbnail.extension,
+          path: hero.thumbnail.path
+        }
+      };
       return card;
     });
-    return cards;
-  }
-  public static canInsertCard(selectedCards: Card[], newSelectedCard: Card) {
-    return (
-      selectedCards === [] ||
-      !selectedCards.find(card => card.id === newSelectedCard.id)
-    );
+    return this.randomizeCards(cards);
   }
 
   public static compareCards(firstCard: Card, secondCard: Card) {
-    return firstCard.id === secondCard.id;
+    return firstCard.name === secondCard.name;
   }
 
   public static resetCards(selectedCards: Card[], cards: Card[]) {
     selectedCards.forEach(selectedCard => {
       cards.map(card => {
-        if (card.id === selectedCard.id) card.selected = false;
+        if (card.name === selectedCard.name) card.selected = false;
       });
     });
 
@@ -44,8 +43,9 @@ export default class CardFactory {
   }
 
   public static fillSelectedCards(selectedCards: Card[], selectedCard: Card) {
-    if (this.canInsertCard(selectedCards, selectedCard))
+    if (selectedCards.length < 2) {
       selectedCards.push(selectedCard);
+    }
 
     return selectedCards;
   }
@@ -56,8 +56,9 @@ export default class CardFactory {
         selectedCards[Constants.FIRST_CARD],
         selectedCards[Constants.SECOND_CARD]
       )
-    )
+    ) {
       cards = this.resetCards(selectedCards, cards);
+    }
 
     return cards;
   }

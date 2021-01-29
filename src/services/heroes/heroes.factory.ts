@@ -14,13 +14,18 @@ export default class HeroFactory {
   }
 
   private static createRandomNubers(max: number): number[] {
-    const randomArray: number[] = [];
+    let randomArray: number[];
 
-    for (let index = 0; index < Constants.MAX_LENGTH; index++) {
-      randomArray.push(this.getRandomArbitrary(0, max));
-    }
+    do {
+      randomArray = [];
+      for (let index = 0; index < Constants.MAX_LENGTH / 2; index++) {
+        randomArray.push(this.getRandomArbitrary(0, max));
+      }
 
-    return this.shuffle(randomArray);
+      randomArray = this.shuffle(randomArray);
+    } while (this.doesArrayHaveDuplicates(randomArray));
+
+    return randomArray;
   }
 
   private static getRandomArbitrary(min: number, max: number) {
@@ -39,7 +44,11 @@ export default class HeroFactory {
   }
 
   private static duplicateCards(arr: Hero[]): Hero[] {
-    const heroesWithDuplicatedCards: Hero[] = arr.flatMap(i => [i, i]);
+    const heroesWithDuplicatedCards: Hero[] = arr.flatMap((i) => [i, i]);
     return heroesWithDuplicatedCards;
+  }
+
+  private static doesArrayHaveDuplicates(array: number[]): boolean {
+    return array.length !== new Set(array).size;
   }
 }
