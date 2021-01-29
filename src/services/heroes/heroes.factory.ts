@@ -9,7 +9,8 @@ export default class HeroFactory {
       return heroes[elem];
     });
 
-    return randomizedCards;
+    const duplicatedCards: Hero[] = this.duplicateCards(randomizedCards);
+    return duplicatedCards;
   }
 
   private static createRandomNubers(max: number): number[] {
@@ -35,5 +36,10 @@ export default class HeroFactory {
       arr.push(random);
     }
     return arr;
+  }
+
+  private static duplicateCards(arr: Hero[]): Hero[] {
+    const heroesWithDuplicatedCards: Hero[] = arr.flatMap(i => [i, i]);
+    return heroesWithDuplicatedCards;
   }
 }
