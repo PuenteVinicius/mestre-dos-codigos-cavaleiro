@@ -1,6 +1,6 @@
 import { shallowMount } from "@vue/test-utils";
 import Card from "../card.vue";
-import Cards from "../../../public/cards.json";
+import Cards from "../../../../public/heroes.json";
 
 const wrapper: any = shallowMount(Card, {
   propsData: {
@@ -24,10 +24,12 @@ describe("Card", () => {
       it("when card selected state is true", () => {
         wrapper.setProps({
           card: {
-            id: 1,
-            code: "JS",
-            name: "Javascript",
-            svgPath: "https://svgshare.com/i/J3t.svg",
+            id: 1010354,
+            name: "Adam Warlock",
+            thumbnail: {
+              path: "http://i.annihil.us/u/prod/marvel/i/mg/a/f0/5202887448860",
+              extension: "jpg"
+            },
             selected: true
           }
         });
@@ -37,10 +39,12 @@ describe("Card", () => {
       it("when card selected state is false", () => {
         wrapper.setProps({
           card: {
-            id: 1,
-            code: "JS",
-            name: "Javascript",
-            svgPath: "https://svgshare.com/i/J3t.svg",
+            id: 1010354,
+            name: "Adam Warlock",
+            thumbnail: {
+              path: "http://i.annihil.us/u/prod/marvel/i/mg/a/f0/5202887448860",
+              extension: "jpg"
+            },
             selected: false
           }
         });
@@ -64,10 +68,12 @@ describe("Card", () => {
     it("when card selected state is true", () => {
       wrapper.setProps({
         card: {
-          id: 1,
-          code: "JS",
-          name: "Javascript",
-          svgPath: "https://svgshare.com/i/J3t.svg",
+          id: 1010354,
+          name: "Adam Warlock",
+          thumbnail: {
+            path: "http://i.annihil.us/u/prod/marvel/i/mg/a/f0/5202887448860",
+            extension: "jpg"
+          },
           selected: true
         }
       });
@@ -76,10 +82,12 @@ describe("Card", () => {
     it("when card selected state is false", () => {
       wrapper.setProps({
         card: {
-          id: 1,
-          code: "JS",
-          name: "Javascript",
-          svgPath: "https://svgshare.com/i/J3t.svg",
+          id: 1010354,
+          name: "Adam Warlock",
+          thumbnail: {
+            path: "http://i.annihil.us/u/prod/marvel/i/mg/a/f0/5202887448860",
+            extension: "jpg"
+          },
           selected: false
         }
       });
