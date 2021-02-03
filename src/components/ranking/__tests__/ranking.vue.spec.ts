@@ -1,7 +1,7 @@
 import { shallowMount } from "@vue/test-utils";
 import Ranking from "../ranking.vue";
-import UserMock from "../user/user.mocks.json";
-import User from "../user/user.entity";
+import UserMock from "./user.mocks.json";
+import User from "../../user/user.entity";
 
 const userMocks = UserMock;
 
