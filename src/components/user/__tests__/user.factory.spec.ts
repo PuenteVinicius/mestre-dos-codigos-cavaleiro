@@ -1,6 +1,6 @@
-import User from "./user.entity";
-import UserFactory from "./user.factory";
-import UserMocks from "./user.mocks.json";
+import User from "../user.entity";
+import UserFactory from "../user.factory";
+import UserMocks from "../user.mocks.json";
 
 const userFactory = UserFactory;
 const userMocks = UserMocks;
