@@ -259,7 +259,7 @@ describe("Card Factory", () => {
   });
 
   describe("[updateCards] - Test if selected cards should be cleaned", () => {
-    let cards: any[] = puzzleCards;
+    let cards: Card[] = puzzleCards;
     let selectedCards: Card[];
 
     it("When cards inside selected cards are equals", () => {
