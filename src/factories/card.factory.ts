@@ -63,7 +63,7 @@ export default class CardFactory {
     return cards;
   }
 
-  public static randomizeCards(cards: Card[]) {
+  public static randomizeCards(cards: any[]) {
     const randomizedCards: Card[] = [];
 
     while (randomizedCards.length < Constants.MAX_LENGTH) {
@@ -78,14 +78,14 @@ export default class CardFactory {
     return randomizedCards;
   }
 
-  public static showCards(cards: Card[]): Card[] {
+  public static showCards(cards: any[]): Card[] {
     cards.forEach(card => {
       card.selected = true;
     });
     return cards;
   }
 
-  public static closeCards(cards: Card[]) {
+  public static closeCards(cards: any[]) {
     cards.forEach(card => {
       card.selected = false;
     });

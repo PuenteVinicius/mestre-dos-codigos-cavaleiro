@@ -54,7 +54,7 @@ describe("Card Factory", () => {
     });
   });
 
-  describe("[resetCards] - should set selected porperty of equal cards inside selected cards to false", () => {
+  describe("[resetCards] - Should set selected porperty of equal cards inside selected cards to false", () => {
     let selectedCards: Card[];
     let cards: Card[];
     it("When both cards of cards inside cards are true", () => {
@@ -66,7 +66,7 @@ describe("Card Factory", () => {
             path: "http://i.annihil.us/u/prod/marvel/i/mg/a/f0/5202887448860",
             extension: "jpg"
           },
-          selected: true
+          selected: false
         },
         {
           id: 1010370,
@@ -75,7 +75,7 @@ describe("Card Factory", () => {
             path: "http://i.annihil.us/u/prod/marvel/i/mg/1/60/52695277ee088",
             extension: "jpg"
           },
-          selected: true
+          selected: false
         },
         {
           id: 1009152,
@@ -84,7 +84,7 @@ describe("Card Factory", () => {
             path: "http://i.annihil.us/u/prod/marvel/i/mg/b/b0/4ce59ea2103ac",
             extension: "jpg"
           },
-          selected: false
+          selected: true
         },
         {
           id: 1009159,
@@ -93,7 +93,7 @@ describe("Card Factory", () => {
             path: "http://i.annihil.us/u/prod/marvel/i/mg/8/03/526165ed93180",
             extension: "jpg"
           },
-          selected: false
+          selected: true
         }
       ];
 
@@ -105,7 +105,7 @@ describe("Card Factory", () => {
             path: "http://i.annihil.us/u/prod/marvel/i/mg/b/b0/4ce59ea2103ac",
             extension: "jpg"
           },
-          selected: false
+          selected: true
         },
         {
           id: 1009159,
@@ -114,7 +114,7 @@ describe("Card Factory", () => {
             path: "http://i.annihil.us/u/prod/marvel/i/mg/8/03/526165ed93180",
             extension: "jpg"
           },
-          selected: false
+          selected: true
         }
       ];
 
@@ -145,6 +145,15 @@ describe("Card Factory", () => {
             extension: "jpg"
           },
           selected: false
+        },
+        {
+          id: 1009159,
+          name: "Archangel",
+          thumbnail: {
+            path: "http://i.annihil.us/u/prod/marvel/i/mg/8/03/526165ed93180",
+            extension: "jpg"
+          },
+          selected: false
         }
       ]);
     });
@@ -153,7 +162,6 @@ describe("Card Factory", () => {
   describe("[fillSelectedCards] - Insert selected cards on the temp array", () => {
     let cardSelected: Card;
     let cardsSelected: Card[];
-
     it("When selected cards is equal to === []", () => {
       cardSelected = {
         id: 1009152,
@@ -203,6 +211,15 @@ describe("Card Factory", () => {
             extension: "jpg"
           },
           selected: false
+        },
+        {
+          id: 1009152,
+          name: "Ancient One",
+          thumbnail: {
+            path: "http://i.annihil.us/u/prod/marvel/i/mg/b/b0/4ce59ea2103ac",
+            extension: "jpg"
+          },
+          selected: false
         }
       ]);
     });
@@ -233,23 +250,19 @@ describe("Card Factory", () => {
         cardFactory.fillSelectedCards(cardsSelected, cardSelected)
       ).toEqual([
         {
-          id: 1009159,
-          name: "Archangel",
-          description: "",
-          modified: "2013-10-18T12:48:24-0400",
+          id: 1009152,
+          name: "Ancient One",
           thumbnail: {
-            path: "http://i.annihil.us/u/prod/marvel/i/mg/8/03/526165ed93180",
+            path: "http://i.annihil.us/u/prod/marvel/i/mg/b/b0/4ce59ea2103ac",
             extension: "jpg"
           },
           selected: false
         },
         {
-          id: 1009152,
-          name: "Ancient One",
-          description: "",
-          modified: "1969-12-31T19:00:00-0500",
+          id: 1010370,
+          name: "Alpha Flight",
           thumbnail: {
-            path: "http://i.annihil.us/u/prod/marvel/i/mg/b/b0/4ce59ea2103ac",
+            path: "http://i.annihil.us/u/prod/marvel/i/mg/1/60/52695277ee088",
             extension: "jpg"
           },
           selected: false
@@ -266,13 +279,12 @@ describe("Card Factory", () => {
       selectedCards = [];
 
       cards[0].selected = true;
-      cards[10].selected = true;
 
       selectedCards.push(cards[0]);
-      selectedCards.push(cards[10]);
+      selectedCards.push(cards[0]);
 
       cards = cardFactory.updateCards(selectedCards, cards);
-      expect(cards[0].selected && cards[10].selected).toEqual(true);
+      expect(cards[0].selected && cards[0].selected).toEqual(true);
     });
     it("When cards inside selected cards are not equals", () => {
       selectedCards = [];
@@ -290,7 +302,8 @@ describe("Card Factory", () => {
 
   describe("[randomizeCards] - it should Radom cards", () => {
     it("should return a diferente array of cards", () => {
-      const cards: Card[] = cardFactory.randomizeCards(puzzleCards);
+
+      const cards = cardFactory.randomizeCards(puzzleCards);
       expect(cards).not.toEqual(puzzleCards);
     });
   });
@@ -317,7 +330,7 @@ describe("Card Factory", () => {
     });
   });
 
-  describe("[isWinner] - Testes if the user won the game", () => {
+  describe("[isWinner] - Tests if the user won the game", () => {
     it("all selected properties should be true", () => {
       let isThereAfalse = false;
       const cards: Card[] = cardFactory.showCards(puzzleCards);
