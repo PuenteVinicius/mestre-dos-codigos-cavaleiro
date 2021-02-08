@@ -1,8 +1,8 @@
 import CardFactory from "@/factories/card.factory";
 import { shallowMount } from "@vue/test-utils";
 import Board from "../board.vue";
-import { Constants } from "../constants";
-import Cards from "../../public/cards.json";
+import { Constants } from "../../constants";
+import Cards from "../../../public/heroes.json";
 
 const $router = {
   currentRoute: {
@@ -21,9 +21,6 @@ const wrapper: any = shallowMount(Board, {
 CardFactory.compareCards = jest.fn();
 
 describe("Board", () => {
-  it("renders the correct message", () => {
-    expect(wrapper.text()).toBe("PuzzleMemory");
-  });
 
   it("verify if is a vue Component", () => {
     expect(wrapper.isVueInstance()).toBeTruthy();
